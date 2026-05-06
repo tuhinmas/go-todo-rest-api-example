@@ -36,14 +36,17 @@ jobs:
             ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
 
       - run:
-          name: Send image to server
-          command: scp app.tar $SSH_USER@$SSH_HOST:/var/www/app/
-
-      - run:
           name: Deploy
           command: |
             ssh $SSH_USER@$SSH_HOST "
-              cd /var/www/app &&
-              docker load < app.tar &&
-              docker compose up -d
+            docker pull tuhinmas/devops-sanber:latest &&
+            docker compose up -d
             "
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
