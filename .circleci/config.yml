@@ -8,7 +8,7 @@ jobs:
 
       - run:
           name: Build Docker image
-          command: docker build -t app:latest .
+          command: docker build -t app:latest -f docker/Dockerfile .
 
       - run:
           name: Save image as artifact
