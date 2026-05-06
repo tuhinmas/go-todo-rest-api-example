@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build -t devops-sanber:latest -f docker/Dockerfile .
+            docker build -t tuhinmas/devops-sanber:latest -f docker/Dockerfile .
             docker images
 
       - run:
