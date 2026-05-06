@@ -13,12 +13,12 @@ jobs:
             docker images
 
       - run:
-        name: Login registry
-        command: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          name: Login registry
+          command: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
 
       - run:
-        name: Push
-        command: docker push tuhinmas/devops-sanber:latest
+          name: Push
+          command: docker push tuhinmas/devops-sanber:latest
 
   deploy:
     docker:
