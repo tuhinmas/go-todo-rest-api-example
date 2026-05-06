@@ -1,0 +1,48 @@
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: Build Docker image
+          command: docker build -t app:latest .
+
+      - run:
+          name: Save image as artifact
+          command: docker save app:latest > app.tar
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - app.tar
+
+  deploy:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: Setup SSH key
+          command: |
+            mkdir -p ~/.ssh
+            echo "$SSH_KEY" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
+
+      - run:
+          name: Send image to server
+          command: scp app.tar $SSH_USER@$SSH_HOST:/var/www/app/
+
+      - run:
+          name: Deploy
+          command: |
+            ssh $SSH_USER@$SSH_HOST "
+              cd /var/www/app &&
+              docker load < app.tar &&
+              docker compose up -d
+            "
