@@ -9,19 +9,16 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build -t app:latest -f docker/Dockerfile .
+            docker build -t devops-sanber:latest -f docker/Dockerfile .
             docker images
-            docker save -o app.tar app:latest
-            ls -lh app.tar
 
       - run:
-          name: Save image as artifact
-          command: docker save app:latest > app.tar
+        name: Login registry
+        command: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
 
-      - persist_to_workspace:
-          root: .
-          paths:
-            - app.tar
+      - run:
+        name: Push
+        command: docker push tuhinmas/devops-sanber:latest
 
   deploy:
     docker:
