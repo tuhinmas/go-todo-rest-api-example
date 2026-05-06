@@ -30,6 +30,8 @@ func (a *App) Initialize(config *config.Config) {
 
 	db, err := gorm.Open(config.DB.Dialect, dbURI)
 	if err != nil {
+		log.Printf("DB DSN => %s", dbURI)
+    	log.Fatalf("Could not connect to database using DSN: %s", dbURI)
 		log.Fatal("Could not connect database")
 	}
 

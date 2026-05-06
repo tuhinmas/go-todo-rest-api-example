@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: sanber-final-project
+    restart: unless-stopped
+    ports:
+      - "8888:3000"
+    env_file:
+      - .env
+    networks:
+      - default
+
+volumes:
+  devdata: {}
+  testdata: {}
+
+networks:
+  default:
+    driver: bridge
