@@ -32,12 +32,18 @@ jobs:
             chmod 600 ~/.ssh/id_rsa
             ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
 
-      # - run:
-      #     name: Deploy
-      #     command: |
-      #       ssh -vvv $SSH_USER@$SSH_HOST "
-      #       docker pull tuhinmas/devops-sanber:latest &&
-      #       docker compose up -d"
+      - run:
+          name: Deploy
+          command: |
+            ssh -vvv $SSH_USER@$SSH_HOST << 'EOF'
+            set -e
+
+            cd /var/www
+
+            docker pull tuhinmas/devops-sanber:latest
+            docker compose up -d
+
+            EOF
 workflows:
   version: 2
   build_and_deploy:
