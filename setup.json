@@ -1,0 +1,11 @@
+{
+    "nginx.conf": nginx/nginx.conf,
+    "domain": "https://good-cobras-see-politely.st.a.dcdg.xyz/",
+    "ufw": {
+        "allow": [
+            "443/tcp",
+            "22/tcp"
+        ]
+    },
+    "github": "https://github.com/tuhinmas/go-todo-rest-api-example"
+}

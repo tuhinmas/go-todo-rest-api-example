@@ -1,0 +1,20 @@
+1. persiapan vps
+    - Ufw setup
+    - Install Docker
+    - Install Docker Compose
+    - Setup SSH untuk akses dari CircleCI
+    - Setup swap
+    - install mysql
+
+2. Persiapan Deployment Code
+   - Buat Dockerfile
+   - Buat docker-compose.yml
+   - Setup CircleCI environment san SSH Key
+   - Buat CircleCI config
+
+3. Proses Pipeline
+   - Build image terbaru
+   - Push image ke docker registry
+4. Proses Deployment
+   - Pull image terbaru ke docker registry
+   - Build / update container
