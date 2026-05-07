@@ -10,7 +10,7 @@ import (
 )
 
 func Home(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
-	respondJSON(w, http.StatusOK, "Welcome to the Home Page")
+	respondJSON(w, http.StatusOK, "Welcome to the Home Page test- 1")
 }
 
 func GetAllProjects(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
