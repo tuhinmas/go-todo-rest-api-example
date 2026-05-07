@@ -18,3 +18,8 @@
 4. Proses Deployment
    - Pull image terbaru ke docker registry
    - Build / update container
+
+
+Alasan:
+1. Lebih chalenging.
+2. menggunakan circle ci agar lebih ramah di UI.
