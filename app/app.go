@@ -42,6 +42,9 @@ func (a *App) Initialize(config *config.Config) {
 
 // setRouters sets the all required routers
 func (a *App) setRouters() {
+	/* HOME */
+	a.Get("/", a.handleRequest(handler.Home))
+
 	// Routing for handling the projects
 	a.Get("/projects", a.handleRequest(handler.GetAllProjects))
 	a.Post("/projects", a.handleRequest(handler.CreateProject))

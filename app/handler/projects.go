@@ -9,6 +9,10 @@ import (
 	"github.com/mingrammer/go-todo-rest-api-example/app/model"
 )
 
+func Home(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
+	respondJSON(w, http.StatusOK, "Welcome to the Home Page")
+}
+
 func GetAllProjects(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	projects := []model.Project{}
 	db.Find(&projects)
