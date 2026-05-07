@@ -25,6 +25,9 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run:
+          name: test connection
+          command: ssh -vvv mastuhin33@$SSH_HOST
+      - run:
           name: Deploy
           command: |
             ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << 'EOF'
