@@ -41,7 +41,7 @@ jobs:
             cd /var/www
 
             docker pull tuhinmas/devops-sanber:latest
-            docker compose up -d
+            docker-compose up -d
 
             EOF
 workflows:
