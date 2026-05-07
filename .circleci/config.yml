@@ -37,6 +37,7 @@ jobs:
           command: |
             ssh -vvv $SSH_USER@$SSH_HOST << 'EOF'
             set -e
+            cd /var/www
             docker pull tuhinmas/devops-sanber:latest
             docker-compose up -d
             EOF
