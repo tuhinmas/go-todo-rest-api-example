@@ -23,3 +23,4 @@
 Alasan:
 1. Lebih chalenging.
 2. menggunakan circle ci agar lebih ramah di UI.
+3. Jalur bonus
