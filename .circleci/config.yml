@@ -19,7 +19,6 @@ jobs:
       - run:
           name: Push
           command: docker push tuhinmas/devops-sanber:latest
-
   deploy:
     docker:
       - image: cimg/base:stable
