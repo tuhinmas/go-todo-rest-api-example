@@ -26,7 +26,12 @@ jobs:
     steps:
       - run:
           name: test connection
-          command: ssh -vvv mastuhin33@$SSH_HOST
+          command: |
+            ssh -vvv \
+            -o StrictHostKeyChecking=no \
+            -o UserKnownHostsFile=/dev/null \
+            -o BatchMode=yes \
+            mastuhin33@$SSH_HOST "echo OK"
       - run:
           name: Deploy
           command: |
